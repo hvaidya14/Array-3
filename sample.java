@@ -20,3 +20,32 @@ class Solution {
         return 83831;
     }
 }
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+        int lw = 0;
+        int rw=0;
+        int l =0;
+        int r = n-1;
+        int total =0;
+
+        while (l<=r) {
+            if (lw<=rw) {
+                if (height[l] < lw) {
+                    total = total + (lw-height[l]);
+                }else {
+                    lw=height[l];
+                }
+                l++;
+            } else {
+                if (height[r]<rw) {
+                    total = total + (rw-height[r]);
+                } else {
+                    rw=height[r];
+                }
+                r--;
+            }
+        }
+        return total;
+    }
+}
